@@ -1,0 +1,49 @@
+%!Adobe-FontList 1.18
+%Locale:0x407
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:Aileron-Regular
+FamilyName:Aileron
+StyleName:Regular
+FullName:Aileron
+MenuName:Aileron
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:D:\Workspace\Unity\JumpVR\Documents\Flyer Source\Document fonts\Aileron-Regular.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+FileLength:27644
+FileModTime:1408528585
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Aileron
+NameArray:0,Win,1,Aileron
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:DoctorSoosBold
+FamilyName:Doctor Soos Bold
+StyleName:Bold
+FullName:Doctor Soos Bold
+MenuName:Doctor Soos Bold
+StyleBits:2
+WritingScript:Roman
+OutlineFileName:D:\Workspace\Unity\JumpVR\Documents\Flyer Source\Document fonts\Doctor Soos Bold 2.1.ttf
+DataFormat:sfntData
+hasSVG:no
+FileLength:37648
+FileModTime:1480611742
+WeightClass:700
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Doctor Soos Bold
+NameArray:0,Win,1,Doctor Soos Bold
+%EndFont
+
