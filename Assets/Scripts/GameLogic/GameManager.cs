@@ -129,14 +129,16 @@ public class GameManager : MonoBehaviour
 
             }
 
-            
-            yield return new WaitForSeconds(UpdateInterval);
+            float waitTime = UnityEngine.Random.Range(0.5f, 3f);
+            Debug.Log(waitTime);
+            //yield return new WaitForSeconds(UpdateInterval);
+            yield return new WaitForSeconds(waitTime);
         }
     }
 
     private void ResetGame()
     {
-        Debug.Log(villageObjects.Count);
+        //Debug.Log(villageObjects.Count);
         for (int i= villageObjects.Count-1; i>=0 ;i--)
         {
             villageObjects[i].DestroyBuilding();
@@ -192,7 +194,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         MainMenu.Deactivated();
-
+        scoreScript.turnOffScoreBoard();
+        UiText.resetValues();
         AmbientSoundManager.Instance.enableIdleSounds();
 
         WaypointManager.SetActive(true);
@@ -205,6 +208,7 @@ public class GameManager : MonoBehaviour
         startTime = Time.time;
         EndTime = (int) startTime + gameTime;
         StartCoroutine(Clock());
+
     }
 
     public void StopGame() 

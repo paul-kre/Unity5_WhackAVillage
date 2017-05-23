@@ -1,0 +1,85 @@
+Initialize engine version: 5.6.0b9 (e1cc23a55ad8)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 980 Ti (ID=0x17c8)
+    Vendor:   NVIDIA
+    VRAM:     6015 MB
+    Driver:   21.21.13.7609
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\UnityEngine.TestRunner.dll (this message is harmless)
+Loading D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\UnityEngine.TestRunner.dll into Unity Child Domain
+Platform assembly: D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\nunit.framework.dll (this message is harmless)
+Loading D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\nunit.framework.dll into Unity Child Domain
+Platform assembly: D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\UnityEngine.VR.dll (this message is harmless)
+Loading D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\UnityEngine.VR.dll into Unity Child Domain
+- Completed reload, in  0.021 seconds
+Platform assembly: D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Projekte\WhackAVillage\unity\Unity5_WhackAVillage\Build_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1200 59Hz; virtual: 3840x1200 at -1920,0
+<RI> Initialized touch support.
+ovr_Create(&m_session, &luid) failed: ovr_Create: No HMD attached.
+Failed to create Oculus Session.Compositor failed to initialize.ovr_Create(&m_session, &luid) failed: ovr_Create: No HMD attached.
+Failed to create Oculus Session.Compositor failed to initialize.OpenVR initialized!
+ 
+(Filename:  Line: 423)
+
+[VRDevice] Successfully created device OpenVR.
+UnloadTime: 0.558345 ms
+Connected to lighthouse:LHR-95FF26F3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 2d4 -> priority: 1 
+  Thread -> id: 230c -> priority: 1 
+  Thread -> id: 260c -> priority: 1 
+  Thread -> id: dac -> priority: 1 
+Activated menu
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Restart
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.283214 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2304.
+Total: 0.800569 ms (FindLiveObjects: 0.094132 ms CreateObjectMapping: 0.034896 ms MarkObjects: 0.658930 ms  DeleteObjects: 0.012023 ms)
+
+Activated menu
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Restart
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.038100 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 2304.
+Total: 0.996459 ms (FindLiveObjects: 0.190611 ms CreateObjectMapping: 0.069793 ms MarkObjects: 0.722858 ms  DeleteObjects: 0.010850 ms)
+
+Activated menu
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OpenVR Shutdown
+ 
+(Filename:  Line: 888)
+
