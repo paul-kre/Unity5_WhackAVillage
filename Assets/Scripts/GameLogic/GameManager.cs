@@ -54,6 +54,17 @@ public class GameManager : MonoBehaviour
 
     public int maxNumberVillages;
 
+    //Score
+    [SerializeField]
+    private Score scoreScript;
+
+    //Timer
+    [SerializeField]
+    private int gameTime = 0;
+    public Text Text_Clock;
+    float startTime;
+    int EndTime = -1;
+    int timeInGame;
 
     //bool[] spawned = new bool[] { false, false, false, false, false, false };
     List<BuildingSite> villagesToSpawn = new List<BuildingSite>();
@@ -85,7 +96,17 @@ public class GameManager : MonoBehaviour
         SwipeDetectorGear.Instance.AddSwipeRightListener(Restart);
         MainMenu.AddStartGameListener(StartGame);
 
-        //		StartCoroutine("Villages");
+        // StartCoroutine("Villages");
+    }
+
+    void Update()
+    {
+        keyInteraction();
+        /*
+        if(EndTime == (int)Time.time && !gamePaused)
+        {
+            StopGame();
+        }*/
     }
 
     IEnumerator Villages()
@@ -115,10 +136,15 @@ public class GameManager : MonoBehaviour
 
     private void ResetGame()
     {
-        foreach (var building in villageObjects)
+        Debug.Log(villageObjects.Count);
+        for (int i= villageObjects.Count-1; i>=0 ;i--)
+        {
+            villageObjects[i].DestroyBuilding();
+        }
+        /*        foreach (var building in villageObjects)
         {
             building.DestroyBuilding();
-        }
+        }*/
     }
 
     public void createBuilding(BuildingSite site, GameObject prefab)
@@ -126,6 +152,7 @@ public class GameManager : MonoBehaviour
         var Village = Instantiate(prefab, site.Position, Quaternion.LookRotation(site.Position), BottomModels).GetComponent<Destructible>();
         Village.transform.localPosition = new Vector3(Village.transform.localPosition.x, 0, Village.transform.localPosition.z);
         villageObjects.Add(Village);
+
         Village.AddOnDestroyListener(delegate ()
         {
             villageObjects.Remove(Village);
@@ -173,6 +200,25 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Villages());
 
         UiText.gameObject.SetActive(true);
+
+        gameTime = PlayerPrefs.GetInt("GameTime")*10;       //Here
+        startTime = Time.time;
+        EndTime = (int) startTime + gameTime;
+        StartCoroutine(Clock());
+    }
+
+    public void StopGame() 
+    {
+        Debug.Log("StopGame");
+        scoreScript.GetScore(UiText.VillagesDestroyed, UiText.HitsReceived);
+        StopCoroutine(Villages());
+        UiText.gameObject.SetActive(false);
+        WaypointManager.SetActive(false);
+        gamePaused = true;
+        ResetGame();
+        MainMenu.Activated();
+        MainMenu.UnDestruct();
+
     }
 
 
@@ -211,5 +257,99 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         action();
+    }
+    IEnumerator Clock()
+    {
+        timeInGame = (int)(Time.time - startTime);
+        int timeleft = gameTime - timeInGame;
+
+        if (timeleft >= 0)
+        {
+            string minutes = Mathf.Floor(timeleft / 60).ToString("00");
+            string seconds = (timeleft % 60).ToString("00");
+
+            Text_Clock.text = minutes + ":" + seconds;
+            yield return new WaitForSeconds(1);
+            StartCoroutine(Clock());
+        }
+        else
+        {
+            StopCoroutine("Clock");
+            StopGame();
+        }
+        
+    }
+
+    private void keyInteraction()
+    {
+        //SetTime 
+        if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Debug.Log("Set to 1");
+            PlayerPrefs.SetInt("GameTime",1);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Debug.Log("Set to 2");
+            PlayerPrefs.SetInt("GameTime", 2);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Debug.Log("Set to 3");
+            PlayerPrefs.SetInt("GameTime", 3);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Debug.Log("Set to 4");
+            PlayerPrefs.SetInt("GameTime", 4);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            Debug.Log("Set to 5");
+            PlayerPrefs.SetInt("GameTime", 5);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad6) || Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            Debug.Log("Set to 6");
+            PlayerPrefs.SetInt("GameTime", 6);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad7) || Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            Debug.Log("Set to 7");
+            PlayerPrefs.SetInt("GameTime", 7);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad8) || Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            Debug.Log("Set to 8");
+            PlayerPrefs.SetInt("GameTime", 8);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad9) || Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            Debug.Log("Set to 9");
+            PlayerPrefs.SetInt("GameTime", 9);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            Debug.Log("Set to 10");
+            PlayerPrefs.SetInt("GameTime", 10);
+        }
+
+        //Restart
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("Restart");
+            Restart();
+        }
+
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.KeypadPlus))
+        {
+            scoreScript.GetScore(10, 11);
+        }
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.KeypadMinus))
+        {
+            scoreScript.delete();
+            scoreScript.turnOffScoreBoard();
+        }
+
     }
 }

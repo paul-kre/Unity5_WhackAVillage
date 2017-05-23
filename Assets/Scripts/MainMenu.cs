@@ -89,6 +89,10 @@ public class MainMenu : MonoBehaviour
         callback();
 
     }
+    public void UnDestruct()
+    {
+        StartGameVillage.IsLiving = true;
+    }
 
 //    void OnValidate()
 //    {

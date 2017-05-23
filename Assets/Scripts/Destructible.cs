@@ -22,7 +22,7 @@ public class Destructible : MonoBehaviour, ForceReceiver
 
     [SerializeField]
     [NonEditable]
-    private bool IsLiving = true;
+    public bool IsLiving = true;
 
     [SerializeField]
     private bool DoNotDestroy = false;

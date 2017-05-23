@@ -7,8 +7,8 @@ public class UIText : MonoBehaviour
 {
 
     public Text VillageCountText, HitCounText;
-    private int VillagesDestroyed;
-    private int HitsReceived;
+    public int VillagesDestroyed;
+    public int HitsReceived;
     private bool newValues;
 
 	// Use this for initialization
