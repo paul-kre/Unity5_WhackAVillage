@@ -201,7 +201,7 @@ public class GameManager : MonoBehaviour
 
         UiText.gameObject.SetActive(true);
 
-        gameTime = PlayerPrefs.GetInt("GameTime")*10;       //Here
+        gameTime = PlayerPrefs.GetInt("GameTime")*60;       //Here
         startTime = Time.time;
         EndTime = (int) startTime + gameTime;
         StartCoroutine(Clock());
