@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 005587aa07098c742a1543babefeb48a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Phone: 1
   UpdateInterval: 5
   DEBUG: 0
   UiText: {fileID: 0}

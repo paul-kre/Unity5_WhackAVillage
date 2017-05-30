@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Scenes/WhackAVillage_1.0.unity
-  - enabled: 1
-    path: Assets/Scenes/WhackAVillage_1.0_Vive.unity
   - enabled: 0
+    path: Assets/Scenes/WhackAVillage_1.0_Vive.unity
+  - enabled: 1
     path: Assets/Scenes/WhackAVillage_1.0_Vive_Small.unity

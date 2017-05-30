@@ -10,6 +10,8 @@ public class GameEvent : UnityEvent { }
 
 public class GameManager : MonoBehaviour
 {
+
+    public bool Phone = false;
     [Serializable]
     public class BuildingSite
     {
@@ -97,16 +99,18 @@ public class GameManager : MonoBehaviour
         MainMenu.AddStartGameListener(StartGame);
 
         // StartCoroutine("Villages");
+        if(Phone)
+        {
+            PlayerPrefs.SetInt("GameTime", 2);
+        }
     }
 
     void Update()
     {
-        keyInteraction();
-        /*
-        if(EndTime == (int)Time.time && !gamePaused)
+        if(!Phone)
         {
-            StopGame();
-        }*/
+        keyInteraction();
+        }
     }
 
     IEnumerator Villages()
@@ -129,8 +133,8 @@ public class GameManager : MonoBehaviour
 
             }
 
-            float waitTime = UnityEngine.Random.Range(0.5f, 3f);
-            Debug.Log(waitTime);
+            float waitTime = UnityEngine.Random.Range(1f, 6f);
+            //Debug.Log(waitTime);
             //yield return new WaitForSeconds(UpdateInterval);
             yield return new WaitForSeconds(waitTime);
         }
@@ -143,10 +147,7 @@ public class GameManager : MonoBehaviour
         {
             villageObjects[i].DestroyBuilding();
         }
-        /*        foreach (var building in villageObjects)
-        {
-            building.DestroyBuilding();
-        }*/
+
     }
 
     public void createBuilding(BuildingSite site, GameObject prefab)
