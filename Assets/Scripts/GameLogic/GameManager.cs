@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
     //Timer
     [SerializeField]
     private int gameTime = 0;
+
+    public int timeToRestartMenue = 5;
     public Text Text_Clock;
     float startTime;
     int EndTime = -1;
@@ -116,10 +118,10 @@ public class GameManager : MonoBehaviour
     IEnumerator Villages()
     {
         yield return new WaitForSeconds(1.5f);
-
+        Debug.Log("SpawnVillage");
         while (!gamePaused)
         {
-
+            Debug.Log("Game not paused idot");
             if (villagesToSpawn.Count > 0)
             {
                 int newVillage = (int)(UnityEngine.Random.value * villagesToSpawn.Count);
@@ -209,6 +211,8 @@ public class GameManager : MonoBehaviour
         startTime = Time.time;
         EndTime = (int) startTime + gameTime;
         StartCoroutine(Clock());
+        gamePaused = false;
+        Debug.Log("startGame");
 
     }
 
@@ -217,12 +221,14 @@ public class GameManager : MonoBehaviour
         Debug.Log("StopGame");
         scoreScript.GetScore(UiText.VillagesDestroyed, UiText.HitsReceived);
         StopCoroutine(Villages());
+        AmbientSoundManager.Instance.disableIdleSounds();
         UiText.gameObject.SetActive(false);
         WaypointManager.SetActive(false);
         gamePaused = true;
         ResetGame();
-        MainMenu.Activated();
-        MainMenu.UnDestruct();
+        StartCoroutine(StartMenueAfterSec(timeToRestartMenue));
+        //MainMenu.Activated();
+        //MainMenu.UnDestruct();
 
     }
 
@@ -246,7 +252,6 @@ public class GameManager : MonoBehaviour
         AmbientSoundManager.Instance.disableIdleSounds();
 
         MainMenu.Activated();
-
         WaypointManager.SetActive(false);
         ResetGame();
         
@@ -283,6 +288,14 @@ public class GameManager : MonoBehaviour
             StopGame();
         }
         
+    }
+
+    IEnumerator StartMenueAfterSec(int time)
+    {
+        yield return new WaitForSeconds(time);
+        Debug.Log("aktivat-ion");
+        MainMenu.Activated();
+        MainMenu.UnDestruct();
     }
 
     private void keyInteraction()

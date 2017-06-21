@@ -49,7 +49,7 @@ public class OptiTrackManager : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(1.0f);
-            Debug.Log(dmsClient.benchmark);
+            //Debug.Log(dmsClient.benchmark);
             dmsClient.benchmark = 0;
         }
     }

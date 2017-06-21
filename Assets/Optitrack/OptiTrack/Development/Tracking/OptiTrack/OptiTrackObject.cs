@@ -10,6 +10,9 @@ public class OptiTrackObject : MonoBehaviour {
     //public string rigidBodyName;
     public int rigidbodyIndex;
 
+    public bool setPosition = true;
+    public bool setRotation = true;
+
     // Use this for initialization
     void Start () {
 
@@ -24,8 +27,14 @@ public class OptiTrackObject : MonoBehaviour {
 
             if (rbData != null)
             {
-                gameObject.transform.position = rbData.position;
-                gameObject.transform.rotation = rbData.orientation;
+                if (setPosition)
+                {
+                    gameObject.transform.position = rbData.position;
+                }
+                if (setRotation)
+                {
+                    gameObject.transform.rotation = rbData.orientation;
+                }
             }
         }
        
