@@ -8,6 +8,8 @@ public delegate void CalibrationHandler();
 [RequireComponent(typeof(AudioSource))]
 public class Trampolin : MonoBehaviour
 {
+    public bool spectator = false;
+
     public GameObject tPoseDummy;       //Mesh that shows the T-Pose the user should perform
     public Text tPoseText;              //Used to display the instructions
 
@@ -120,12 +122,24 @@ public class Trampolin : MonoBehaviour
 
     private void Start()
     {
-        //init my vars
-        _isCalibrated = false;
 
-        //vpc = new ValuePlotterController(this.gameObject, new Rect(0, 0, 100, 100), Color.black, Color.white, -30, 30);
-        StartCoroutine(VoiceGuidance());
-        StartCoroutine(WaitAndStartCalibration(_preDelay, _secondsTillCalibration));
+        if (!spectator)
+        {
+            //init my vars
+            _isCalibrated = false;
+
+            //vpc = new ValuePlotterController(this.gameObject, new Rect(0, 0, 100, 100), Color.black, Color.white, -30, 30);
+            StartCoroutine(VoiceGuidance());
+            StartCoroutine(WaitAndStartCalibration(_preDelay, _secondsTillCalibration));
+        }
+        else
+        {
+            _isCalibrated = true;
+            tPoseText.text = "";
+            tPoseDummy.SetActive(false);
+            GameManager.Instance.CalibrationDone();//geht zum Menü über
+        }
+
     }
 
 

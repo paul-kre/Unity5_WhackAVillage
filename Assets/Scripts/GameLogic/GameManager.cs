@@ -10,7 +10,7 @@ public class GameEvent : UnityEvent { }
 
 public class GameManager : MonoBehaviour
 {
-
+    public bool spectator = false;
     public bool Phone = false;
     [Serializable]
     public class BuildingSite
@@ -63,12 +63,14 @@ public class GameManager : MonoBehaviour
     //Timer
     [SerializeField]
     private int gameTime = 0;
-
     public int timeToRestartMenue = 5;
     public Text Text_Clock;
     float startTime;
     int EndTime = -1;
     int timeInGame;
+    public AudioClip TimerBeep;
+    public AudioClip FinalBeep;
+    AudioSource timerSound;
 
     //bool[] spawned = new bool[] { false, false, false, false, false, false };
     List<BuildingSite> villagesToSpawn = new List<BuildingSite>();
@@ -105,6 +107,10 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("GameTime", 2);
         }
+        if(spectator)
+        {
+            PlayerPrefs.SetInt("GameTime", 60);
+        }
     }
 
     void Update()
@@ -118,10 +124,8 @@ public class GameManager : MonoBehaviour
     IEnumerator Villages()
     {
         yield return new WaitForSeconds(1.5f);
-        Debug.Log("SpawnVillage");
         while (!gamePaused)
         {
-            Debug.Log("Game not paused idot");
             if (villagesToSpawn.Count > 0)
             {
                 int newVillage = (int)(UnityEngine.Random.value * villagesToSpawn.Count);
@@ -207,7 +211,7 @@ public class GameManager : MonoBehaviour
 
         UiText.gameObject.SetActive(true);
 
-        gameTime = PlayerPrefs.GetInt("GameTime")*60;       //Here
+        gameTime = PlayerPrefs.GetInt("GameTime")*5;       //Here
         startTime = Time.time;
         EndTime = (int) startTime + gameTime;
         StartCoroutine(Clock());
@@ -280,6 +284,25 @@ public class GameManager : MonoBehaviour
 
             Text_Clock.text = minutes + ":" + seconds;
             yield return new WaitForSeconds(1);
+            if (timeleft <= 3)
+            {
+                Debug.Log("Here" + timeleft);
+
+                timerSound = GetComponent<AudioSource>();
+
+                if (timeleft == 0)
+                {
+                    //timerSound.clip = FinalBeep;
+                    //timerSound.Play();
+                }
+                else
+                {
+                    //timerSound.clip = TimerBeep;
+                    //timerSound.Play();
+
+                }
+
+            }
             StartCoroutine(Clock());
         }
         else
