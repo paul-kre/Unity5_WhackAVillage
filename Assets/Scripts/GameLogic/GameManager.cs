@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     //Score
     [SerializeField]
     private Score scoreScript;
+    private bool SetScore;
 
     //Timer
     [SerializeField]
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
     {
         CameraAnimator = Camera.GetComponent<Animator>();
 
-        SwipeDetectorGear.Instance.AddSwipeTopListener(Recalibrate);
+        //SwipeDetectorGear.Instance.AddSwipeTopListener(Recalibrate);
         SwipeDetectorGear.Instance.AddSwipeLeftListener(ExitToMenu);
         SwipeDetectorGear.Instance.AddSwipeRightListener(Restart);
         MainMenu.AddStartGameListener(StartGame);
@@ -198,6 +199,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        SetScore = true;
         MainMenu.Deactivated();
         scoreScript.turnOffScoreBoard();
         UiText.resetValues();
@@ -221,19 +223,35 @@ public class GameManager : MonoBehaviour
     public void StopGame() 
     {
         if(DEBUG) Debug.Log("StopGame");
-        scoreScript.GetScore(UiText.VillagesDestroyed, UiText.HitsReceived);
+
+        if (SetScore)
+        {
+            scoreScript.GetScore(UiText.VillagesDestroyed, UiText.HitsReceived);
+            StartCoroutine(StartMenueAfterSec(timeToRestartMenue));
+        }
+        else
+        {
+            StartCoroutine(StartMenueAfterSec(0));
+
+        }
+
         StopCoroutine(Villages());
         AmbientSoundManager.Instance.disableIdleSounds();
         UiText.gameObject.SetActive(false);
         WaypointManager.SetActive(false);
         gamePaused = true;
         ResetGame();
-        StartCoroutine(StartMenueAfterSec(timeToRestartMenue));
+
         //MainMenu.Activated();
         //MainMenu.UnDestruct();
 
     }
 
+    public void ExitToMenu()
+    {
+        SetScore = false;
+        gameTime = timeInGame;
+    }
 
     public void Credits()
     {
@@ -244,19 +262,6 @@ public class GameManager : MonoBehaviour
     {
         CameraAnimator.SetTrigger("Blurry");
         UiText.addHit();
-    }
-
-    public void ExitToMenu()
-    {
-        gamePaused = true;
-        UiText.resetValues();
-        UiText.gameObject.SetActive(false);
-        AmbientSoundManager.Instance.disableIdleSounds();
-
-        MainMenu.Activated();
-        WaypointManager.SetActive(false);
-        ResetGame();
-        
     }
 
     private void Timer(float time, UnityAction action)
@@ -315,9 +320,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            string minutes = Mathf.Floor(timeleft / 60).ToString("00");
-            string seconds = (timeleft % 60).ToString("00");
-
+            string minutes = 0.ToString("00");
+            string seconds = 0.ToString("00");
             if(DEBUG) Debug.Log("TimeUps");
             //timerSound.clip = Warning_Runde_vorbei;
             //timerSound.Play();
@@ -326,7 +330,6 @@ public class GameManager : MonoBehaviour
             StopCoroutine("Clock");
             StopGame();
         }
-        
     }
 
     IEnumerator StartMenueAfterSec(int time)
