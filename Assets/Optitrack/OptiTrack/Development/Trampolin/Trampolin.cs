@@ -8,7 +8,7 @@ public delegate void CalibrationHandler();
 [RequireComponent(typeof(AudioSource))]
 public class Trampolin : MonoBehaviour
 {
-    public bool spectator = false;
+    public bool SkipCalibration = false;
 
     public GameObject tPoseDummy;       //Mesh that shows the T-Pose the user should perform
     public Text tPoseText;              //Used to display the instructions
@@ -123,7 +123,7 @@ public class Trampolin : MonoBehaviour
     private void Start()
     {
 
-        if (!spectator)
+        if (!SkipCalibration)
         {
             //init my vars
             _isCalibrated = false;

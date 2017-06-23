@@ -10,8 +10,8 @@ public class GameEvent : UnityEvent { }
 
 public class GameManager : MonoBehaviour
 {
-    public bool spectator = false;
     public bool Phone = false;
+
     [Serializable]
     public class BuildingSite
     {
@@ -68,8 +68,10 @@ public class GameManager : MonoBehaviour
     float startTime;
     int EndTime = -1;
     int timeInGame;
-    public AudioClip TimerBeep;
-    public AudioClip FinalBeep;
+    public AudioClip Warning_3;
+    public AudioClip Warning_2;
+    public AudioClip Warning_1;
+    public AudioClip Warning_Runde_vorbei;
     AudioSource timerSound;
 
     //bool[] spawned = new bool[] { false, false, false, false, false, false };
@@ -106,10 +108,6 @@ public class GameManager : MonoBehaviour
         if(Phone)
         {
             PlayerPrefs.SetInt("GameTime", 2);
-        }
-        if(spectator)
-        {
-            PlayerPrefs.SetInt("GameTime", 60);
         }
     }
 
@@ -216,13 +214,13 @@ public class GameManager : MonoBehaviour
         EndTime = (int) startTime + gameTime;
         StartCoroutine(Clock());
         gamePaused = false;
-        Debug.Log("startGame");
+        if (DEBUG) Debug.Log("startGame");
 
     }
 
     public void StopGame() 
     {
-        Debug.Log("StopGame");
+        if(DEBUG) Debug.Log("StopGame");
         scoreScript.GetScore(UiText.VillagesDestroyed, UiText.HitsReceived);
         StopCoroutine(Villages());
         AmbientSoundManager.Instance.disableIdleSounds();
@@ -277,36 +275,54 @@ public class GameManager : MonoBehaviour
         timeInGame = (int)(Time.time - startTime);
         int timeleft = gameTime - timeInGame;
 
-        if (timeleft >= 0)
+        if (timeleft > 0)
         {
             string minutes = Mathf.Floor(timeleft / 60).ToString("00");
             string seconds = (timeleft % 60).ToString("00");
 
             Text_Clock.text = minutes + ":" + seconds;
+
             yield return new WaitForSeconds(1);
-            if (timeleft <= 3)
+
+            if (timeleft <= 4)
             {
-                Debug.Log("Here" + timeleft);
-
                 timerSound = GetComponent<AudioSource>();
-
-                if (timeleft == 0)
+                //timerSound.clip = FinalBeep;
+                //timerSound.Play();
+                switch(timeleft)
                 {
-                    //timerSound.clip = FinalBeep;
-                    //timerSound.Play();
+                    case 4:
+                        if (DEBUG) Debug.Log("3");
+                        //timerSound.clip = Warning_3;
+                        //timerSound.Play();
+                        break;
+                    case 3:
+                        if (DEBUG) Debug.Log("2");
+                        //timerSound.clip = Warning_2;
+                        //timerSound.Play();
+                        break;
+                    case 2:
+                        if (DEBUG) Debug.Log("1");
+                        //timerSound.clip = Warning_1;
+                        //timerSound.Play();
+                        break;
+                    case 1:
+                        break;
                 }
-                else
-                {
-                    //timerSound.clip = TimerBeep;
-                    //timerSound.Play();
-
-                }
-
+           
             }
             StartCoroutine(Clock());
         }
         else
         {
+            string minutes = Mathf.Floor(timeleft / 60).ToString("00");
+            string seconds = (timeleft % 60).ToString("00");
+
+            if(DEBUG) Debug.Log("TimeUps");
+            //timerSound.clip = Warning_Runde_vorbei;
+            //timerSound.Play();
+
+            Text_Clock.text = minutes + ":" + seconds;
             StopCoroutine("Clock");
             StopGame();
         }
