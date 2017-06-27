@@ -10,6 +10,8 @@ public class GameEvent : UnityEvent { }
 
 public class GameManager : MonoBehaviour
 {
+
+    public bool setShortTime = false;
     public bool Phone = false;
 
     [Serializable]
@@ -101,7 +103,7 @@ public class GameManager : MonoBehaviour
         CameraAnimator = Camera.GetComponent<Animator>();
 
         //SwipeDetectorGear.Instance.AddSwipeTopListener(Recalibrate);
-        SwipeDetectorGear.Instance.AddSwipeLeftListener(ExitToMenu);
+        SwipeDetectorGear.Instance.AddSwipeLeftListener(ExitToMenu); //Works only in game
         SwipeDetectorGear.Instance.AddSwipeRightListener(Restart);
         MainMenu.AddStartGameListener(StartGame);
 
@@ -211,7 +213,9 @@ public class GameManager : MonoBehaviour
 
         UiText.gameObject.SetActive(true);
 
-        gameTime = PlayerPrefs.GetInt("GameTime")*5;       //Here
+        gameTime = PlayerPrefs.GetInt("GameTime")*60;       //Here
+
+        if(setShortTime) gameTime = PlayerPrefs.GetInt("GameTime") * 5;
         startTime = Time.time;
         EndTime = (int) startTime + gameTime;
         StartCoroutine(Clock());

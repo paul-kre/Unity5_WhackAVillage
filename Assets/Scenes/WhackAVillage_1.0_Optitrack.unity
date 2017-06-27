@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3599435, g: 0.56558913, b: 0.6748825, a: 1}
+  m_IndirectSpecularColor: {r: 0.36046585, g: 0.5653611, b: 0.6753558, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -14154,7 +14154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c47884b265887c47800f807a8b5ed55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkipCalibration: 1
+  SkipCalibration: 0
   tPoseDummy: {fileID: 1964506592}
   tPoseText: {fileID: 531100586}
   modelHeight: 1.7
@@ -14177,7 +14177,7 @@ MonoBehaviour:
     type: 3}
   _finishCalibrationVoice: {fileID: 8300000, guid: 318c1809ea097574583fe3df9b8b0358,
     type: 3}
-  _preDelay: 1
+  _preDelay: 10
   _userContainer: {fileID: 1205902471}
 --- !u!82 &1340435899
 AudioSource:
@@ -20988,7 +20988,7 @@ Prefab:
     - target: {fileID: 22353220, guid: bdbb2cc8909f611469ad6012660648ce, type: 2}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 394732008}
     - target: {fileID: 224778314841432584, guid: bdbb2cc8909f611469ad6012660648ce,
         type: 2}
       propertyPath: m_LocalScale.x
