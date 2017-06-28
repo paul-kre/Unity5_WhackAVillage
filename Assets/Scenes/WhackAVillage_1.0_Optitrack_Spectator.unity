@@ -14305,7 +14305,7 @@ MonoBehaviour:
   SkipCalibration: 0
   tPoseDummy: {fileID: 1964506592}
   tPoseText: {fileID: 531100586}
-  modelHeight: 1.7
+  modelHeight: 1.55
   hmd: {fileID: 394732000}
   character: {fileID: 2083179434}
   _jumpDifferenceThreshold: 0.1
@@ -14325,7 +14325,7 @@ MonoBehaviour:
     type: 3}
   _finishCalibrationVoice: {fileID: 8300000, guid: 318c1809ea097574583fe3df9b8b0358,
     type: 3}
-  _preDelay: 10
+  _preDelay: 1
   _userContainer: {fileID: 1205902471}
 --- !u!82 &1340435899
 AudioSource:

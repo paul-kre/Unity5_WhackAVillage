@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -85,7 +85,7 @@ LightmapSettings:
     m_PVRFilteringAtrousColorSigma: 1
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
-  m_LightingDataAsset: {fileID: 112000002, guid: 06d37ac3ac071264b9d8e0d48b8eae2a,
+  m_LightingDataAsset: {fileID: 112000002, guid: c7a7179ebcbeb9e4da5ccd9258c86cfc,
     type: 2}
   m_ShadowMaskMode: 2
 --- !u!196 &4
@@ -14157,7 +14157,7 @@ MonoBehaviour:
   SkipCalibration: 0
   tPoseDummy: {fileID: 1964506592}
   tPoseText: {fileID: 531100586}
-  modelHeight: 1.7
+  modelHeight: 1.6
   hmd: {fileID: 394732000}
   character: {fileID: 2083179434}
   _jumpDifferenceThreshold: 0.1
