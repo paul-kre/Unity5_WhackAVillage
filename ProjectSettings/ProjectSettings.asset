@@ -11,7 +11,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: HSD
-  productName: Whack_a_Village_1.0_Optitrack
+  productName: Whack_a_Village_1.0_Optitrack_Spectator
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21176471, a: 1}
@@ -136,7 +136,7 @@ PlayerSettings:
   protectGraphicsMemory: 0
   useHDRDisplay: 0
   applicationIdentifier:
-    Android: com.HSD.Whack_a_Village
+    Android: com.HSD.Whack_a_Village_Spectator
     Standalone: unity.HSD.Whack a Village
     Tizen: com.HSD.JumpVRBalloon
     iOS: com.HSD.JumpVRBalloon

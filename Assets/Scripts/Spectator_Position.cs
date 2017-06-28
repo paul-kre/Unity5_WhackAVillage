@@ -9,11 +9,10 @@ public class Spectator_Position : MonoBehaviour {
     public GameObject controller;
     public GameObject spectatorCamera;
 
-    public float movespeed_y = 50;
-    public float movespeed_x_z = 50;
+    private float movespeed_y = 1;
+    private float movespeed_x_z = 1;
 
     private bool modeSetCamera = true;
-    private int counter = 0;
 
     public Text timerText;
 
@@ -34,12 +33,6 @@ public class Spectator_Position : MonoBehaviour {
 
         if (modeSetCamera)
         {
-            if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
-            {
-                timerText.text = "SchulterTaste";
-
-            }
-
             if (OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
             {
                 if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
@@ -63,6 +56,10 @@ public class Spectator_Position : MonoBehaviour {
 
                 timerText.text = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad, OVRInput.Controller.RTrackedRemote) +" "+ OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger);
 
+            }
+            else
+            {
+                timerText.text = "";
             }
         }
 
