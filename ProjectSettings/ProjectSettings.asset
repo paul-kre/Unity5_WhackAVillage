@@ -19,7 +19,7 @@ PlayerSettings:
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
-  m_SplashScreenLogoStyle: 1
+  m_SplashScreenLogoStyle: 0
   m_SplashScreenDrawMode: 0
   m_SplashScreenBackgroundAnimationZoom: 1
   m_SplashScreenLogoAnimationZoom: 1
@@ -40,7 +40,8 @@ PlayerSettings:
   m_SplashScreenLogos: []
   m_SplashScreenBackgroundLandscape: {fileID: 0}
   m_SplashScreenBackgroundPortrait: {fileID: 0}
-  m_VirtualRealitySplashScreen: {fileID: 0}
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 26ece054bd06f594aa21b2a896b41f19,
+    type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
@@ -136,7 +137,7 @@ PlayerSettings:
   protectGraphicsMemory: 0
   useHDRDisplay: 0
   applicationIdentifier:
-    Android: com.HSD.Whack_a_Village
+    Android: com.HSD.Whack_a_Spectator
     Standalone: unity.HSD.Whack a Village
     Tizen: com.HSD.JumpVRBalloon
     iOS: com.HSD.JumpVRBalloon
@@ -430,6 +431,16 @@ PlayerSettings:
   switchParentalControl: 0
   switchAllowsScreenshot: 1
   switchDataLossConfirmation: 0
+  XboxTitleId: 
+  XboxImageXexPath: 
+  XboxSpaPath: 
+  XboxGenerateSpa: 0
+  XboxDeployKinectResources: 0
+  XboxSplashScreen: {fileID: 0}
+  xboxEnableSpeech: 0
+  xboxAdditionalTitleMemorySize: 0
+  xboxDeployKinectHeadOrientation: 0
+  xboxDeployKinectHeadPosition: 0
   ps4NPAgeRating: 12
   ps4NPTitleSecret: 
   ps4NPTrophyPackPath: 

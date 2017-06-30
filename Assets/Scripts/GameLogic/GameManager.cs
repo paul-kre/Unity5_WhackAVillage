@@ -76,7 +76,11 @@ public class GameManager : MonoBehaviour
     public AudioClip Warning_3;
     public AudioClip Warning_2;
     public AudioClip Warning_1;
-    public AudioClip Warning_Runde_vorbei;
+    public AudioClip Warning_Runde_vorbei1;
+    public AudioClip Warning_Runde_vorbei2;
+    public AudioClip Warning_Runde_vorbei3;
+    public AudioClip Warning_Runde_vorbei4;
+
     AudioSource timerSound;
 
     //bool[] spawned = new bool[] { false, false, false, false, false, false };
@@ -303,6 +307,8 @@ public class GameManager : MonoBehaviour
 
                 yield return new WaitForSeconds(1);
 
+                if(timeleft == 15) AmbientSoundManager.Instance.disableIdleSounds();
+
                 if (timeleft <= 4)
                 {
                     timerSound = GetComponent<AudioSource>();
@@ -312,18 +318,18 @@ public class GameManager : MonoBehaviour
                     {
                         case 4:
                             if (DEBUG) Debug.Log("3");
-                            //timerSound.clip = Warning_3;
-                            //timerSound.Play();
+                            timerSound.clip = Warning_3;
+                            timerSound.Play();
                             break;
                         case 3:
                             if (DEBUG) Debug.Log("2");
-                            //timerSound.clip = Warning_2;
-                            //timerSound.Play();
+                            timerSound.clip = Warning_2;
+                            timerSound.Play();
                             break;
                         case 2:
                             if (DEBUG) Debug.Log("1");
-                            //timerSound.clip = Warning_1;
-                            //timerSound.Play();
+                            timerSound.clip = Warning_1;
+                            timerSound.Play();
                             break;
                         case 1:
                             break;
@@ -337,12 +343,28 @@ public class GameManager : MonoBehaviour
                 string minutes = 0.ToString("00");
                 string seconds = 0.ToString("00");
                 if (DEBUG) Debug.Log("TimeUps");
-                //timerSound.clip = Warning_Runde_vorbei;
-                //timerSound.Play();
 
                 Text_Clock.text = minutes + ":" + seconds;
-                StopCoroutine("Clock");
                 StopGame();
+                yield return new WaitForSeconds(1.5f);
+                int numRandom = UnityEngine.Random.Range(1, 5);
+                switch (numRandom)
+                {
+                    case 1:
+                        timerSound.clip = Warning_Runde_vorbei1;
+                        break;
+                    case 2:
+                        timerSound.clip = Warning_Runde_vorbei2;
+                        break;
+                    case 3:
+                        timerSound.clip = Warning_Runde_vorbei3;
+                        break;
+                    case 4:
+                        timerSound.clip = Warning_Runde_vorbei4;
+                        break;
+                }
+                timerSound.Play();
+                //StopCoroutine("Clock");
             }
 
         }
@@ -351,7 +373,7 @@ public class GameManager : MonoBehaviour
     IEnumerator StartMenueAfterSec(int time)
     {
         yield return new WaitForSeconds(time);
-        Debug.Log("aktivat-ion");
+        //Debug.Log("aktivat-ion");
         MainMenu.Activated();
         MainMenu.UnDestruct();
     }
