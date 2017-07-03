@@ -19599,7 +19599,7 @@ Prefab:
         type: 2}
       propertyPath: Warning_2
       value: 
-      objectReference: {fileID: 8300000, guid: c66ba052ecea90f469bfd2a480c2202b, type: 3}
+      objectReference: {fileID: 8300000, guid: 8a48c80ec9181294d8da71a864a89b08, type: 3}
     - target: {fileID: 114000011916370820, guid: 003339b6410c9574b82bca8a60211659,
         type: 2}
       propertyPath: Warning_1

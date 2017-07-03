@@ -137,7 +137,7 @@ PlayerSettings:
   protectGraphicsMemory: 0
   useHDRDisplay: 0
   applicationIdentifier:
-    Android: com.HSD.Whack_a_Spectator
+    Android: com.HSD.Whack_a_Village
     Standalone: unity.HSD.Whack a Village
     Tizen: com.HSD.JumpVRBalloon
     iOS: com.HSD.JumpVRBalloon
